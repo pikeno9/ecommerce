@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja Online</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🛍️ Loja</a>
+    <div class="nav-links">
+      <a href="index.html">Início</a>
+      <a href="carrinho.html" class="cart-link">
+        🛒 Carrinho <span class="cart-count">0</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Bem-vindo à nossa Loja</h1>
+  <p>Produtos selecionados com os melhores preços</p>
+</div>
+
+<div class="container">
+  <div id="filtros" class="filtros"></div>
+  <div id="produtos-grid" class="produtos-grid">
+    <div class="skeleton" style="height:320px;border-radius:12px"></div>
+    <div class="skeleton" style="height:320px;border-radius:12px"></div>
+    <div class="skeleton" style="height:320px;border-radius:12px"></div>
+  </div>
+</div>
+
+<script src="js/carrinho.js"></script>
+<script src="js/api.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

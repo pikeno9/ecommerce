@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho — Loja</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🛍️ Loja</a>
+    <div class="nav-links">
+      <a href="index.html">Início</a>
+      <a href="carrinho.html" class="cart-link">
+        🛒 Carrinho <span class="cart-count">0</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-header">
+    <h1>Meu Carrinho</h1>
+    <p><a href="index.html" style="color:var(--primary);text-decoration:none">← Continuar comprando</a></p>
+  </div>
+
+  <div id="carrinho-conteudo"></div>
+</div>
+
+<script src="js/carrinho.js"></script>
+<script>
+function render() {
+  const itens = Carrinho.getAll();
+  const el = document.getElementById('carrinho-conteudo');
+
+  if (!itens.length) {
+    el.innerHTML = `
+      <div class="carrinho-vazio">
+        <div class="icon">🛒</div>
+        <h2>Seu carrinho está vazio</h2>
+        <p>Adicione produtos para continuar</p>
+        <a href="index.html" class="btn btn-primary btn-lg" style="margin-top:1rem">Ver Produtos</a>
+      </div>`;
+    return;
+  }
+
+  const total = Carrinho.getTotal();
+  const frete = total >= 200 ? 0 : 19.90;
+
+  el.innerHTML = `
+    <div class="carrinho-layout">
+      <div class="carrinho-items">
+        ${itens.map(i => `
+          <div class="carrinho-item">
+            <img src="${i.imagem}" alt="${i.nome}">
+            <div class="item-info">
+              <div class="item-nome">${i.nome}</div>
+              <div class="item-preco">R$ ${i.preco.toFixed(2).replace('.', ',')}</div>
+            </div>
+            <div class="qty-control">
+              <button onclick="atualizar(${i.id}, ${i.qty - 1})">−</button>
+              <span>${i.qty}</span>
+              <button onclick="atualizar(${i.id}, ${i.qty + 1})">+</button>
+            </div>
+            <div style="font-weight:700;min-width:80px;text-align:right">
+              R$ ${(i.preco * i.qty).toFixed(2).replace('.', ',')}
+            </div>
+            <button class="btn btn-danger" onclick="remover(${i.id})">🗑</button>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="resumo-card">
+        <h3>Resumo do Pedido</h3>
+        ${itens.map(i => `
+          <div class="resumo-linha">
+            <span>${i.nome} ×${i.qty}</span>
+            <span>R$ ${(i.preco * i.qty).toFixed(2).replace('.', ',')}</span>
+          </div>
+        `).join('')}
+        <div class="resumo-linha">
+          <span>Frete</span>
+          <span>${frete === 0 ? '<span style="color:var(--success)">Grátis</span>' : `R$ ${frete.toFixed(2).replace('.', ',')}`}</span>
+        </div>
+        ${frete > 0 ? `<p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.5rem">Frete grátis acima de R$ 200,00</p>` : ''}
+        <div class="resumo-total">
+          <span>Total</span>
+          <span>R$ ${(total + frete).toFixed(2).replace('.', ',')}</span>
+        </div>
+        <a href="checkout.html" class="btn btn-success btn-full btn-lg" style="margin-top:1rem">
+          Finalizar Compra →
+        </a>
+        <button class="btn btn-danger btn-full" style="margin-top:0.5rem" onclick="limpar()">
+          Limpar Carrinho
+        </button>
+      </div>
+    </div>`;
+}
+
+function atualizar(id, qty) { Carrinho.update(id, qty); render(); }
+function remover(id) { Carrinho.remove(id); render(); }
+function limpar() { Carrinho.clear(); render(); }
+
+render();
+</script>
+</body>
+</html>
