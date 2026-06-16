@@ -1,4 +1,4 @@
-const API = 'https://democracy-skillet-prevalent.ngrok-free.dev/api';
+const API = 'https://ecommerce-production-a99c.up.railway.app/api';
 
 async function getProdutos() {
   const res = await fetch(`${API}/produtos`);
