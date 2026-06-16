@@ -20,7 +20,7 @@
   {
     "id": 3,
     "nome": "Camisa do Brasil de 2030",
-    "preco": 79.90,
+    "preco": 799.90,
     "descricao": "Camiseta 100% algodão com caimento perfeito. Disponível em várias cores. Lavagem fácil e durabilidade garantida.",
     "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaAotFjclGagGExaVLN8wQy4G3e_enlPMJGA&s",
     "categoria": "Futebol",
@@ -29,7 +29,7 @@
   {
     "id": 4,
     "nome": "Volkswagen Tera",
-    "preco": 949.90,
+    "preco": 119,499.90 ,
     "descricao": "Carro incrivel que chega em estoque este sábado",
 "imagem":"https://web-subscription-images.rentcars.com/attachment/1OD3L.png",
     "categoria": "Carros",
@@ -38,7 +38,7 @@
   {
     "id": 5,
     "nome": "Copa do Mundo 2026",
-    "preco": 799.90,
+    "preco": 7,000,000,000.00 ,
     "descricao": "O guia definitivo para escrever código limpo e de qualidade. Leitura essencial para qualquer desenvolvedor de software.",
     "imagem": "https://www.visa.com.br/dam/VCOM/regional/lac/brazil/newsroom/visa-traz-trofeu-do-campeao-da-copa-do-mundo-da-FIFA-800x450.jpg",
     "categoria": "Futebol",
