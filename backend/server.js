@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.static(path.join(__dirname, 'frontend')));
 
 const produtos = JSON.parse(fs.readFileSync(path.join(__dirname, 'produtos.json'), 'utf-8'));
 const pedidos = [];
